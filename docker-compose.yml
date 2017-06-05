@@ -1,0 +1,16 @@
+message-center:
+  image: message/center:v1.0
+  environment:
+    - RABBITMQ_DEFAULT_USER=bohe
+    - RABBITMQ_DEFAULT_PASS=wlswn
+  links:
+    - message-middleware
+message-middleware:
+  image: rabbitmq:3.6.10
+  ports:
+   - 15672
+   - 5672
+  environment:
+    - RABBITMQ_ERLANG_COOKIE='secret'
+    - RABBITMQ_DEFAULT_USER=bohe
+    - RABBITMQ_DEFAULT_PASS=wlswn
